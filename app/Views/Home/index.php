@@ -1,225 +1,427 @@
 <!DOCTYPE html>
 <html>
-  <head> 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Dark Bootstrap Admin </title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="robots" content="all,follow">
-    <!-- Bootstrap CSS-->
-    <link rel="stylesheet" href="<?php echo site_url('recursos/');?>vendor/bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome CSS-->
-    <link rel="stylesheet" href="<?php echo site_url('recursos/');?>vendor/font-awesome/css/font-awesome.min.css">
-    <!-- Custom Font Icons CSS-->
-    <link rel="stylesheet" href="<?php echo site_url('recursos/');?>css/font.css">
-    <!-- Google fonts - Muli-->
-    <link rel="stylesheet" href="<?php echo site_url('recursos/');?>https://fonts.googleapis.com/css?family=Muli:300,400,700">
-    <!-- theme stylesheet-->
-    <link rel="stylesheet" href="<?php echo site_url('recursos/');?>css/style.default.css" id="theme-stylesheet">
-    <!-- Custom stylesheet - for your changes-->
-    <link rel="stylesheet" href="<?php echo site_url('recursos/');?>css/custom.css">
-    <!-- Favicon-->
-    <link rel="shortcut icon" href="<?php echo site_url('recursos/');?>img/favicon.ico">
 
-  </head>
-  <body>
-    <header class="header">   
-      <nav class="navbar navbar-expand-lg">
-        <div class="search-panel">
-          <div class="search-inner d-flex align-items-center justify-content-center">
-            <div class="close-btn">Close <i class="fa fa-close"></i></div>
-            <form id="searchForm" action="#">
-              <div class="form-group">
-                <input type="search" name="search" placeholder="What are you searching for...">
-                <button type="submit" class="submit">Search</button>
-              </div>
-            </form>
-          </div>
-        </div>
-        <div class="container-fluid d-flex align-items-center justify-content-between">
-          <div class="navbar-header">
-            <!-- Navbar Header--><a href="<?php echo site_url('recursos/');?>index.html" class="navbar-brand">
-              <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">Dark</strong><strong>Admin</strong></div>
-              <div class="brand-text brand-sm"><strong class="text-primary">D</strong><strong>A</strong></div></a>
-            <!-- Sidebar Toggle Btn-->
-            <button class="sidebar-toggle"><i class="fa fa-long-arrow-left"></i></button>
-          </div>
-          <div class="right-menu list-inline no-margin-bottom">    
-            <div class="list-inline-item"><a href="<?php echo site_url('recursos/');?>#" class="search-open nav-link"><i class="icon-magnifying-glass-browser"></i></a></div>
-            <div class="list-inline-item dropdown"><a id="navbarDropdownMenuLink1" href="<?php echo site_url('recursos/');?>http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link messages-toggle"><i class="icon-email"></i><span class="badge dashbg-1">5</span></a>
-              <div aria-labelledby="navbarDropdownMenuLink1" class="dropdown-menu messages"><a href="<?php echo site_url('recursos/');?>#" class="dropdown-item message d-flex align-items-center">
-                  <div class="profile"><img src="<?php echo site_url('recursos/');?>img/avatar-3.jpg" alt="..." class="img-fluid">
-                    <div class="status online"></div>
-                  </div>
-                  <div class="content">   <strong class="d-block">Nadia Halsey</strong><span class="d-block">lorem ipsum dolor sit amit</span><small class="date d-block">9:30am</small></div></a><a href="<?php echo site_url('recursos/');?>#" class="dropdown-item message d-flex align-items-center">
-                  <div class="profile"><img src="<?php echo site_url('recursos/');?>img/avatar-2.jpg" alt="..." class="img-fluid">
-                    <div class="status away"></div>
-                  </div>
-                  <div class="content">   <strong class="d-block">Peter Ramsy</strong><span class="d-block">lorem ipsum dolor sit amit</span><small class="date d-block">7:40am</small></div></a><a href="<?php echo site_url('recursos/');?>#" class="dropdown-item message d-flex align-items-center">
-                  <div class="profile"><img src="<?php echo site_url('recursos/');?>img/avatar-1.jpg" alt="..." class="img-fluid">
-                    <div class="status busy"></div>
-                  </div>
-                  <div class="content">   <strong class="d-block">Sam Kaheil</strong><span class="d-block">lorem ipsum dolor sit amit</span><small class="date d-block">6:55am</small></div></a><a href="<?php echo site_url('recursos/');?>#" class="dropdown-item message d-flex align-items-center">
-                  <div class="profile"><img src="<?php echo site_url('recursos/');?>img/avatar-5.jpg" alt="..." class="img-fluid">
-                    <div class="status offline"></div>
-                  </div>
-                  <div class="content">   <strong class="d-block">Sara Wood</strong><span class="d-block">lorem ipsum dolor sit amit</span><small class="date d-block">10:30pm</small></div></a><a href="<?php echo site_url('recursos/');?>#" class="dropdown-item text-center message"> <strong>See All Messages <i class="fa fa-angle-right"></i></strong></a></div>
-            </div>
-            <!-- Tasks-->
-            <div class="list-inline-item dropdown"><a id="navbarDropdownMenuLink2" href="<?php echo site_url('recursos/');?>http://example.com" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link tasks-toggle"><i class="icon-new-file"></i><span class="badge dashbg-3">9</span></a>
-              <div aria-labelledby="navbarDropdownMenuLink2" class="dropdown-menu tasks-list"><a href="<?php echo site_url('recursos/');?>#" class="dropdown-item">
-                  <div class="text d-flex justify-content-between"><strong>Task 1</strong><span>40% complete</span></div>
-                  <div class="progress">
-                    <div role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100" class="progress-bar dashbg-1"></div>
-                  </div></a><a href="<?php echo site_url('recursos/');?>#" class="dropdown-item">
-                  <div class="text d-flex justify-content-between"><strong>Task 2</strong><span>20% complete</span></div>
-                  <div class="progress">
-                    <div role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" class="progress-bar dashbg-3"></div>
-                  </div></a><a href="<?php echo site_url('recursos/');?>#" class="dropdown-item">
-                  <div class="text d-flex justify-content-between"><strong>Task 3</strong><span>70% complete</span></div>
-                  <div class="progress">
-                    <div role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100" class="progress-bar dashbg-2"></div>
-                  </div></a><a href="<?php echo site_url('recursos/');?>#" class="dropdown-item">
-                  <div class="text d-flex justify-content-between"><strong>Task 4</strong><span>30% complete</span></div>
-                  <div class="progress">
-                    <div role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100" class="progress-bar dashbg-4"></div>
-                  </div></a><a href="<?php echo site_url('recursos/');?>#" class="dropdown-item">
-                  <div class="text d-flex justify-content-between"><strong>Task 5</strong><span>65% complete</span></div>
-                  <div class="progress">
-                    <div role="progressbar" style="width: 65%" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" class="progress-bar dashbg-1"></div>
-                  </div></a><a href="<?php echo site_url('recursos/');?>#" class="dropdown-item text-center"> <strong>See All Tasks <i class="fa fa-angle-right"></i></strong></a>
-              </div>
-            </div>
-            <!-- Tasks end-->
-            <!-- Megamenu-->
-            <div class="list-inline-item dropdown menu-large"><a href="<?php echo site_url('recursos/');?>#" data-toggle="dropdown" class="nav-link">Mega <i class="fa fa-ellipsis-v"></i></a>
-              <div class="dropdown-menu megamenu">
-                <div class="row">
-                  <div class="col-lg-3 col-md-6"><strong class="text-uppercase">Elements Heading</strong>
-                    <ul class="list-unstyled mb-3">
-                      <li><a href="<?php echo site_url('recursos/');?>#">Lorem ipsum dolor</a></li>
-                      <li><a href="<?php echo site_url('recursos/');?>#">Sed ut perspiciatis</a></li>
-                      <li><a href="<?php echo site_url('recursos/');?>#">Voluptatum deleniti</a></li>
-                      <li><a href="<?php echo site_url('recursos/');?>#">At vero eos</a></li>
-                      <li><a href="<?php echo site_url('recursos/');?>#">Consectetur adipiscing</a></li>
-                      <li><a href="<?php echo site_url('recursos/');?>#">Duis aute irure</a></li>
-                      <li><a href="<?php echo site_url('recursos/');?>#">Necessitatibus saepe</a></li>
-                      <li><a href="<?php echo site_url('recursos/');?>#">Maiores alias</a></li>
-                    </ul>
-                  </div>
-                  <div class="col-lg-3 col-md-6"><strong class="text-uppercase">Elements Heading</strong>
-                    <ul class="list-unstyled mb-3">
-                      <li><a href="<?php echo site_url('recursos/');?>#">Lorem ipsum dolor</a></li>
-                      <li><a href="<?php echo site_url('recursos/');?>#">Sed ut perspiciatis</a></li>
-                      <li><a href="<?php echo site_url('recursos/');?>#">Voluptatum deleniti</a></li>
-                      <li><a href="<?php echo site_url('recursos/');?>#">At vero eos</a></li>
-                      <li><a href="<?php echo site_url('recursos/');?>#">Consectetur adipiscing</a></li>
-                      <li><a href="<?php echo site_url('recursos/');?>#">Duis aute irure</a></li>
-                      <li><a href="<?php echo site_url('recursos/');?>#">Necessitatibus saepe</a></li>
-                      <li><a href="<?php echo site_url('recursos/');?>#">Maiores alias</a></li>
-                    </ul>
-                  </div>
-                  <div class="col-lg-3 col-md-6"><strong class="text-uppercase">Elements Heading</strong>
-                    <ul class="list-unstyled mb-3">
-                      <li><a href="<?php echo site_url('recursos/');?>#">Lorem ipsum dolor</a></li>
-                      <li><a href="<?php echo site_url('recursos/');?>#">Sed ut perspiciatis</a></li>
-                      <li><a href="<?php echo site_url('recursos/');?>#">Voluptatum deleniti</a></li>
-                      <li><a href="<?php echo site_url('recursos/');?>#">At vero eos</a></li>
-                      <li><a href="<?php echo site_url('recursos/');?>#">Consectetur adipiscing</a></li>
-                      <li><a href="<?php echo site_url('recursos/');?>#">Duis aute irure</a></li>
-                      <li><a href="<?php echo site_url('recursos/');?>#">Necessitatibus saepe</a></li>
-                      <li><a href="<?php echo site_url('recursos/');?>#">Maiores alias</a></li>
-                    </ul>
-                  </div>
-                  <div class="col-lg-3 col-md-6"><strong class="text-uppercase">Elements Heading</strong>
-                    <ul class="list-unstyled mb-3">
-                      <li><a href="<?php echo site_url('recursos/');?>#">Lorem ipsum dolor</a></li>
-                      <li><a href="<?php echo site_url('recursos/');?>#">Sed ut perspiciatis</a></li>
-                      <li><a href="<?php echo site_url('recursos/');?>#">Voluptatum deleniti</a></li>
-                      <li><a href="<?php echo site_url('recursos/');?>#">At vero eos</a></li>
-                      <li><a href="<?php echo site_url('recursos/');?>#">Consectetur adipiscing</a></li>
-                      <li><a href="<?php echo site_url('recursos/');?>#">Duis aute irure</a></li>
-                      <li><a href="<?php echo site_url('recursos/');?>#">Necessitatibus saepe</a></li>
-                      <li><a href="<?php echo site_url('recursos/');?>#">Maiores alias</a></li>
-                    </ul>
-                  </div>
-                </div>
-                <div class="row megamenu-buttons text-center">
-                  <div class="col-lg-2 col-md-4"><a href="<?php echo site_url('recursos/');?>#" class="d-block megamenu-button-link dashbg-1"><i class="fa fa-clock-o"></i><strong>Demo 1</strong></a></div>
-                  <div class="col-lg-2 col-md-4"><a href="<?php echo site_url('recursos/');?>#" class="d-block megamenu-button-link dashbg-2"><i class="fa fa-clock-o"></i><strong>Demo 2</strong></a></div>
-                  <div class="col-lg-2 col-md-4"><a href="<?php echo site_url('recursos/');?>#" class="d-block megamenu-button-link dashbg-3"><i class="fa fa-clock-o"></i><strong>Demo 3</strong></a></div>
-                  <div class="col-lg-2 col-md-4"><a href="<?php echo site_url('recursos/');?>#" class="d-block megamenu-button-link dashbg-4"><i class="fa fa-clock-o"></i><strong>Demo 4</strong></a></div>
-                  <div class="col-lg-2 col-md-4"><a href="<?php echo site_url('recursos/');?>#" class="d-block megamenu-button-link bg-danger"><i class="fa fa-clock-o"></i><strong>Demo 5</strong></a></div>
-                  <div class="col-lg-2 col-md-4"><a href="<?php echo site_url('recursos/');?>#" class="d-block megamenu-button-link bg-info"><i class="fa fa-clock-o"></i><strong>Demo 6</strong></a></div>
-                </div>
-              </div>
-            </div>
-            <!-- Megamenu end     -->
-            <!-- Languages dropdown    -->
-            <div class="list-inline-item dropdown"><a id="languages" rel="nofollow" data-target="#" href="<?php echo site_url('recursos/');?>#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link language dropdown-toggle"><img src="<?php echo site_url('recursos/');?>img/flags/16/GB.png" alt="English"><span class="d-none d-sm-inline-block">English</span></a>
-              <div aria-labelledby="languages" class="dropdown-menu"><a rel="nofollow" href="<?php echo site_url('recursos/');?>#" class="dropdown-item"> <img src="<?php echo site_url('recursos/');?>img/flags/16/DE.png" alt="English" class="mr-2"><span>German</span></a><a rel="nofollow" href="<?php echo site_url('recursos/');?>#" class="dropdown-item"> <img src="<?php echo site_url('recursos/');?>img/flags/16/FR.png" alt="English" class="mr-2"><span>French  </span></a></div>
-            </div>
-            <!-- Log out               -->
-            <div class="list-inline-item logout">                   <a id="logout" href="<?php echo site_url('recursos/');?>login.html" class="nav-link">Logout <i class="icon-logout"></i></a></div>
-          </div>
-        </div>
-      </nav>
-    </header>
-    <div class="d-flex align-items-stretch">
-      <!-- Sidebar Navigation-->
-      <nav id="sidebar">
-        <!-- Sidebar Header-->
-        <div class="sidebar-header d-flex align-items-center">
-          <div class="avatar"><img src="<?php echo site_url('recursos/');?>img/avatar-6.jpg" alt="..." class="img-fluid rounded-circle"></div>
-          <div class="title">
-            <h1 class="h5">Mark Stephen</h1>
-            <p>Web Designer</p>
-          </div>
-        </div>
-        <!-- Sidebar Navidation Menus--><span class="heading">Main</span>
-        <ul class="list-unstyled">
-                <li class="active"><a href="<?php echo site_url('recursos/');?>index.html"> <i class="icon-home"></i>Home </a></li>
-                <li><a href="<?php echo site_url('recursos/');?>tables.html"> <i class="icon-grid"></i>Tables </a></li>
-                <li><a href="<?php echo site_url('recursos/');?>charts.html"> <i class="fa fa-bar-chart"></i>Charts </a></li>
-                <li><a href="<?php echo site_url('recursos/');?>forms.html"> <i class="icon-padnote"></i>Forms </a></li>
-                <li><a href="<?php echo site_url('recursos/');?>#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse"> <i class="icon-windows"></i>Example dropdown </a>
-                  <ul id="exampledropdownDropdown" class="collapse list-unstyled ">
-                    <li><a href="<?php echo site_url('recursos/');?>#">Page</a></li>
-                    <li><a href="<?php echo site_url('recursos/');?>#">Page</a></li>
-                    <li><a href="<?php echo site_url('recursos/');?>#">Page</a></li>
-                  </ul>
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Ordem de Serviço <?php echo ' | ' . $this->renderSection('titulo');?></title>
+
+    <link href="<?php echo site_url('inspinia/');?>css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?php echo site_url('inspinia/');?>font-awesome/css/font-awesome.css" rel="stylesheet">
+
+    <link href="<?php echo site_url('inspinia/');?>css/animate.css" rel="stylesheet">
+    <link href="<?php echo site_url('inspinia/');?>css/style.css" rel="stylesheet">
+
+</head>
+
+<body class="">
+
+    <div id="wrapper">
+
+    <nav class="navbar-default navbar-static-side" role="navigation">
+        <div class="sidebar-collapse">
+            <ul class="nav metismenu" id="side-menu">
+                <li class="nav-header">
+                    <div class="dropdown profile-element"> <span>
+                            <img alt="image" class="img-circle" src="<?php echo site_url('inspinia/');?>img/profile_small.jpg" />
+                             </span>
+                        <a data-toggle="dropdown" class="dropdown-toggle" href="<?php echo site_url('inspinia/');?>#">
+                            <span class="clear"> <span class="block m-t-xs"> <strong class="font-bold">David Williams</strong>
+                             </span> <span class="text-muted text-xs block">Art Director <b class="caret"></b></span> </span> </a>
+                        <ul class="dropdown-menu animated fadeInRight m-t-xs">
+                            <li><a href="<?php echo site_url('inspinia/');?>profile.html">Profile</a></li>
+                            <li><a href="<?php echo site_url('inspinia/');?>contacts.html">Contacts</a></li>
+                            <li><a href="<?php echo site_url('inspinia/');?>mailbox.html">Mailbox</a></li>
+                            <li class="divider"></li>
+                            <li><a href="<?php echo site_url('inspinia/');?>login.html">Logout</a></li>
+                        </ul>
+                    </div>
+                    <div class="logo-element">
+                        IN+
+                    </div>
                 </li>
-                <li><a href="<?php echo site_url('recursos/');?>login.html"> <i class="icon-logout"></i>Login page </a></li>
-        </ul><span class="heading">Extras</span>
-        <ul class="list-unstyled">
-          <li> <a href="<?php echo site_url('recursos/');?>#"> <i class="icon-settings"></i>Demo </a></li>
-          <li> <a href="<?php echo site_url('recursos/');?>#"> <i class="icon-writing-whiteboard"></i>Demo </a></li>
-          <li> <a href="<?php echo site_url('recursos/');?>#"> <i class="icon-chart"></i>Demo </a></li>
-        </ul>
-      </nav>
-      <!-- Sidebar Navigation end-->
-      <div class="page-content">
-        <div class="page-header">
-          <div class="container-fluid">
-            <h2 class="h5 no-margin-bottom">Dashboard</h2>
-          </div>
+                <li>
+                    <a href="<?php echo site_url('inspinia/');?>index.html"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span> <span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="<?php echo site_url('inspinia/');?>index.html">Dashboard v.1</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>dashboard_2.html">Dashboard v.2</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>dashboard_3.html">Dashboard v.3</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>dashboard_4_1.html">Dashboard v.4</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>dashboard_5.html">Dashboard v.5 </a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="<?php echo site_url('inspinia/');?>layouts.html"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a>
+                </li>
+                <li>
+                    <a href="<?php echo site_url('inspinia/');?>#"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">Graphs</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="<?php echo site_url('inspinia/');?>graph_flot.html">Flot Charts</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>graph_morris.html">Morris.js Charts</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>graph_rickshaw.html">Rickshaw Charts</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>graph_chartjs.html">Chart.js</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>graph_chartist.html">Chartist</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>c3.html">c3 charts</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>graph_peity.html">Peity Charts</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>graph_sparkline.html">Sparkline Charts</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="<?php echo site_url('inspinia/');?>mailbox.html"><i class="fa fa-envelope"></i> <span class="nav-label">Mailbox </span><span class="label label-warning pull-right">16/24</span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="<?php echo site_url('inspinia/');?>mailbox.html">Inbox</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>mail_detail.html">Email view</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>mail_compose.html">Compose email</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>email_template.html">Email templates</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="<?php echo site_url('inspinia/');?>metrics.html"><i class="fa fa-pie-chart"></i> <span class="nav-label">Metrics</span>  </a>
+                </li>
+                <li>
+                    <a href="<?php echo site_url('inspinia/');?>widgets.html"><i class="fa fa-flask"></i> <span class="nav-label">Widgets</span></a>
+                </li>
+                <li>
+                    <a href="<?php echo site_url('inspinia/');?>#"><i class="fa fa-edit"></i> <span class="nav-label">Forms</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="<?php echo site_url('inspinia/');?>form_basic.html">Basic form</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>form_advanced.html">Advanced Plugins</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>form_wizard.html">Wizard</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>form_file_upload.html">File Upload</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>form_editors.html">Text Editor</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>form_autocomplete.html">Autocomplete</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>form_markdown.html">Markdown</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="<?php echo site_url('inspinia/');?>#"><i class="fa fa-desktop"></i> <span class="nav-label">App Views</span>  <span class="pull-right label label-primary">SPECIAL</span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="<?php echo site_url('inspinia/');?>contacts.html">Contacts</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>profile.html">Profile</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>profile_2.html">Profile v.2</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>contacts_2.html">Contacts v.2</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>projects.html">Projects</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>project_detail.html">Project detail</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>activity_stream.html">Activity stream</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>teams_board.html">Teams board</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>social_feed.html">Social feed</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>clients.html">Clients</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>full_height.html">Outlook view</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>vote_list.html">Vote list</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>file_manager.html">File manager</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>calendar.html">Calendar</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>issue_tracker.html">Issue tracker</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>blog.html">Blog</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>article.html">Article</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>faq.html">FAQ</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>timeline.html">Timeline</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>pin_board.html">Pin board</a></li>
+                    </ul>
+                </li>
+                <li class="active">
+                    <a href="<?php echo site_url('inspinia/');?>#"><i class="fa fa-files-o"></i> <span class="nav-label">Other Pages</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
+                        <li><a href="<?php echo site_url('inspinia/');?>search_results.html">Search results</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>lockscreen.html">Lockscreen</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>invoice.html">Invoice</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>login.html">Login</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>login_two_columns.html">Login v.2</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>forgot_password.html">Forget password</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>register.html">Register</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>404.html">404 Page</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>500.html">500 Page</a></li>
+                        <li class="active"><a href="<?php echo site_url('inspinia/');?>empty_page.html">Empty page</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="<?php echo site_url('inspinia/');?>#"><i class="fa fa-globe"></i> <span class="nav-label">Miscellaneous</span><span class="label label-info pull-right">NEW</span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="<?php echo site_url('inspinia/');?>toastr_notifications.html">Notification</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>nestable_list.html">Nestable list</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>agile_board.html">Agile board</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>timeline_2.html">Timeline v.2</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>diff.html">Diff</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>pdf_viewer.html">PDF viewer</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>i18support.html">i18 support</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>sweetalert.html">Sweet alert</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>idle_timer.html">Idle timer</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>truncate.html">Truncate</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>password_meter.html">Password meter</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>spinners.html">Spinners</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>spinners_usage.html">Spinners usage</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>tinycon.html">Live favicon</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>google_maps.html">Google maps</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>datamaps.html">Datamaps</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>social_buttons.html">Social buttons</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>code_editor.html">Code editor</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>modal_window.html">Modal window</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>clipboard.html">Clipboard</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>text_spinners.html">Text spinners</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>forum_main.html">Forum view</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>validation.html">Validation</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>tree_view.html">Tree view</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>loading_buttons.html">Loading buttons</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>chat_view.html">Chat view</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>masonry.html">Masonry</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>tour.html">Tour</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="<?php echo site_url('inspinia/');?>#"><i class="fa fa-flask"></i> <span class="nav-label">UI Elements</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="<?php echo site_url('inspinia/');?>typography.html">Typography</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>icons.html">Icons</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>draggable_panels.html">Draggable Panels</a></li> <li><a href="<?php echo site_url('inspinia/');?>resizeable_panels.html">Resizeable Panels</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>buttons.html">Buttons</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>video.html">Video</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>tabs_panels.html">Panels</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>tabs.html">Tabs</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>notifications.html">Notifications & Tooltips</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>helper_classes.html">Helper css classes</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>badges_labels.html">Badges, Labels, Progress</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="<?php echo site_url('inspinia/');?>grid_options.html"><i class="fa fa-laptop"></i> <span class="nav-label">Grid options</span></a>
+                </li>
+                <li>
+                    <a href="<?php echo site_url('inspinia/');?>#"><i class="fa fa-table"></i> <span class="nav-label">Tables</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="<?php echo site_url('inspinia/');?>table_basic.html">Static Tables</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>table_data_tables.html">Data Tables</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>table_foo_table.html">Foo Tables</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>jq_grid.html">jqGrid</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="<?php echo site_url('inspinia/');?>#"><i class="fa fa-shopping-cart"></i> <span class="nav-label">E-commerce</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="<?php echo site_url('inspinia/');?>ecommerce_products_grid.html">Products grid</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>ecommerce_product_list.html">Products list</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>ecommerce_product.html">Product edit</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>ecommerce_product_detail.html">Product detail</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>ecommerce-cart.html">Cart</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>ecommerce-orders.html">Orders</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>ecommerce_payments.html">Credit Card form</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="<?php echo site_url('inspinia/');?>#"><i class="fa fa-picture-o"></i> <span class="nav-label">Gallery</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li><a href="<?php echo site_url('inspinia/');?>basic_gallery.html">Lightbox Gallery</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>slick_carousel.html">Slick Carousel</a></li>
+                        <li><a href="<?php echo site_url('inspinia/');?>carousel.html">Bootstrap Carousel</a></li>
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="<?php echo site_url('inspinia/');?>#"><i class="fa fa-sitemap"></i> <span class="nav-label">Menu Levels </span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level collapse">
+                        <li>
+                            <a href="<?php echo site_url('inspinia/');?>#">Third Level <span class="fa arrow"></span></a>
+                            <ul class="nav nav-third-level">
+                                <li>
+                                    <a href="<?php echo site_url('inspinia/');?>#">Third Level Item</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo site_url('inspinia/');?>#">Third Level Item</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo site_url('inspinia/');?>#">Third Level Item</a>
+                                </li>
+
+                            </ul>
+                        </li>
+                        <li><a href="<?php echo site_url('inspinia/');?>#">Second Level Item</a></li>
+                        <li>
+                            <a href="<?php echo site_url('inspinia/');?>#">Second Level Item</a></li>
+                        <li>
+                            <a href="<?php echo site_url('inspinia/');?>#">Second Level Item</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="<?php echo site_url('inspinia/');?>css_animation.html"><i class="fa fa-magic"></i> <span class="nav-label">CSS Animations </span><span class="label label-info pull-right">62</span></a>
+                </li>
+                <li class="landing_link">
+                    <a target="_blank" href="<?php echo site_url('inspinia/');?>landing.html"><i class="fa fa-star"></i> <span class="nav-label">Landing Page</span> <span class="label label-warning pull-right">NEW</span></a>
+                </li>
+                <li class="special_link">
+                    <a href="<?php echo site_url('inspinia/');?>package.html"><i class="fa fa-database"></i> <span class="nav-label">Package</span></a>
+                </li>
+            </ul>
+
         </div>
-        
-        <footer class="footer">
-          <div class="footer__block block no-margin-bottom">
-            <div class="container-fluid text-center">
-              <!-- Please do not remove the backlink to us unless you support us at https://bootstrapious.com/donate. It is part of the license conditions. Thank you for understanding :)-->
-               <p class="no-margin-bottom">2018 &copy; Your company. Download From <a target="_blank" href="<?php echo site_url('recursos/');?>https://templateshub.net">Templates Hub</a>.</p>
+    </nav>
+
+        <div id="page-wrapper" class="gray-bg">
+        <div class="row border-bottom">
+        <nav class="navbar navbar-static-top  " role="navigation" style="margin-bottom: 0">
+        <div class="navbar-header">
+            <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="<?php echo site_url('inspinia/');?>#"><i class="fa fa-bars"></i> </a>
+            <form role="search" class="navbar-form-custom" action="search_results.html">
+                <div class="form-group">
+                    <input type="text" placeholder="Search for something..." class="form-control" name="top-search" id="top-search">
+                </div>
+            </form>
+        </div>
+            <ul class="nav navbar-top-links navbar-right">
+                <li>
+                    <span class="m-r-sm text-muted welcome-message">Welcome to INSPINIA+ Admin Theme.</span>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="<?php echo site_url('inspinia/');?>#">
+                        <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages">
+                        <li>
+                            <div class="dropdown-messages-box">
+                                <a href="<?php echo site_url('inspinia/');?>profile.html" class="pull-left">
+                                    <img alt="image" class="img-circle" src="<?php echo site_url('inspinia/');?>img/a7.jpg">
+                                </a>
+                                <div class="media-body">
+                                    <small class="pull-right">46h ago</small>
+                                    <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
+                                    <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="dropdown-messages-box">
+                                <a href="<?php echo site_url('inspinia/');?>profile.html" class="pull-left">
+                                    <img alt="image" class="img-circle" src="<?php echo site_url('inspinia/');?>img/a4.jpg">
+                                </a>
+                                <div class="media-body ">
+                                    <small class="pull-right text-navy">5h ago</small>
+                                    <strong>Chris Johnatan Overtunk</strong> started following <strong>Monica Smith</strong>. <br>
+                                    <small class="text-muted">Yesterday 1:21 pm - 11.06.2014</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="dropdown-messages-box">
+                                <a href="<?php echo site_url('inspinia/');?>profile.html" class="pull-left">
+                                    <img alt="image" class="img-circle" src="<?php echo site_url('inspinia/');?>img/profile.jpg">
+                                </a>
+                                <div class="media-body ">
+                                    <small class="pull-right">23h ago</small>
+                                    <strong>Monica Smith</strong> love <strong>Kim Smith</strong>. <br>
+                                    <small class="text-muted">2 days ago at 2:30 am - 11.06.2014</small>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="text-center link-block">
+                                <a href="<?php echo site_url('inspinia/');?>mailbox.html">
+                                    <i class="fa fa-envelope"></i> <strong>Read All Messages</strong>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="<?php echo site_url('inspinia/');?>#">
+                        <i class="fa fa-bell"></i>  <span class="label label-primary">8</span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-alerts">
+                        <li>
+                            <a href="<?php echo site_url('inspinia/');?>mailbox.html">
+                                <div>
+                                    <i class="fa fa-envelope fa-fw"></i> You have 16 messages
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="<?php echo site_url('inspinia/');?>profile.html">
+                                <div>
+                                    <i class="fa fa-twitter fa-fw"></i> 3 New Followers
+                                    <span class="pull-right text-muted small">12 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="<?php echo site_url('inspinia/');?>grid_options.html">
+                                <div>
+                                    <i class="fa fa-upload fa-fw"></i> Server Rebooted
+                                    <span class="pull-right text-muted small">4 minutes ago</span>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="text-center link-block">
+                                <a href="<?php echo site_url('inspinia/');?>notifications.html">
+                                    <strong>See All Alerts</strong>
+                                    <i class="fa fa-angle-right"></i>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+
+
+                <li>
+                    <a href="<?php echo site_url('inspinia/');?>login.html">
+                        <i class="fa fa-sign-out"></i> Log out
+                    </a>
+                </li>
+            </ul>
+
+        </nav>
+        </div>
+            <div class="row wrapper border-bottom white-bg page-heading">
+                <div class="col-sm-4">
+                    <h2>This is main title</h2>
+                    <ol class="breadcrumb">
+                        <li>
+                            <a href="<?php echo site_url('inspinia/');?>index.html">This is</a>
+                        </li>
+                        <li class="active">
+                            <strong>Breadcrumb</strong>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-sm-8">
+                    <div class="title-action">
+                        <a href="<?php echo site_url('inspinia/');?>" class="btn btn-primary">This is action area</a>
+                    </div>
+                </div>
             </div>
-          </div>
-        </footer>
-      </div>
-    </div>
-    <!-- JavaScript files-->
-    <script src="<?php echo site_url('recursos/');?>vendor/jquery/jquery.min.js"></script>
-    <script src="<?php echo site_url('recursos/');?>vendor/popper.js/umd/popper.min.js"> </script>
-    <script src="<?php echo site_url('recursos/');?>vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="<?php echo site_url('recursos/');?>js/front.js"></script>
-  </body>
+
+            <div class="wrapper wrapper-content">
+                <h1>Mardonio</h1>
+            </div>
+            <div class="footer">
+                <div class="pull-right">
+                    10GB of <strong>250GB</strong> Free.
+                </div>
+                <div>
+                    <strong>Copyright</strong> Example Company &copy; 2014-2017
+                </div>
+            </div>
+
+        </div>
+        </div>
+
+    <!-- Mainly scripts -->
+    <script src="<?php echo site_url('inspinia/');?>js/jquery-3.1.1.min.js"></script>
+    <script src="<?php echo site_url('inspinia/');?>js/bootstrap.min.js"></script>
+    <script src="<?php echo site_url('inspinia/');?>js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="<?php echo site_url('inspinia/');?>js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+
+    <!-- Custom and plugin javascript -->
+    <script src="<?php echo site_url('inspinia/');?>js/inspinia.js"></script>
+    <script src="<?php echo site_url('inspinia/');?>js/plugins/pace/pace.min.js"></script>
+
+
+</body>
+
 </html>
