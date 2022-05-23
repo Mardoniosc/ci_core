@@ -7,7 +7,7 @@ class Home extends BaseController
     public function index()
     {
         $data = [
-            'title' => 'Home',
+            'titulo' => 'Home',
         ];
 
         return view('Home/index', $data);
