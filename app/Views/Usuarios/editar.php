@@ -5,6 +5,7 @@
 <?php echo $this->endSection(); ?>
 
 <?php echo $this->section('estilos'); ?>
+<link href="<?php echo site_url('inspinia/'); ?>css/plugins/iCheck/custom.css" rel="stylesheet">
 
 <?php echo $this->endSection(); ?>
 
@@ -14,20 +15,22 @@
   <div class="col-lg-6 panel">
     <div class="panel-body">
 
-    <!-- Exibira os retornos do backend -->
-    <div id="response"></div>
-      
+      <!-- Exibira os retornos do backend -->
+      <div id="response"></div>
 
-    <?php echo form_open('/', ['id' => 'form'], ['id' => "$usuario->id"])?>
+      <?php echo form_open('/', ['id' => 'form'], ['id' => "$usuario->id"]) ?>
 
-    <div class="form-group m-t-md m-b-sm">
 
-      <input type="submit" id="btn-salva" class="btn btn-danger m-r-sm" value="Salvar">
+      <?php echo $this->include('Usuarios/_form'); ?>
 
-      <a href="<?php echo site_url("usuarios");?>" class="btn btn-info">Voltar</a>
-    </div>
+      <div class="form-group m-t-md m-b-sm">
 
-    <?php echo form_close(); ?>
+        <input type="submit" id="btn-salva" class="btn btn-danger m-r-sm" value="Salvar">
+
+        <a href="<?php echo site_url("usuarios/exibir/$usuario->id"); ?>" class="btn btn-info">Voltar</a>
+      </div>
+
+      <?php echo form_close(); ?>
 
 
     </div>
@@ -37,4 +40,14 @@
 <?php echo $this->endSection(); ?>
 
 <?php echo $this->section('scripts'); ?>
+<!-- iCheck -->
+<script src="<?php echo site_url('inspinia/'); ?>js/plugins/iCheck/icheck.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('.i-checks').iCheck({
+      checkboxClass: 'icheckbox_square-green',
+      radioClass: 'iradio_square-green',
+    });
+  });
+</script>
 <?php echo $this->endSection(); ?>
