@@ -25,9 +25,9 @@
 
       <div class="form-group m-t-md m-b-sm">
 
-        <input type="submit" id="btn-salva" class="btn btn-danger m-r-sm" value="Salvar">
+        <input type="submit" id="btn-salva" class="btn btn-primary btn-sm m-r-sm" value="Salvar">
 
-        <a href="<?php echo site_url("usuarios/exibir/$usuario->id"); ?>" class="btn btn-info">Voltar</a>
+        <a href="<?php echo site_url("usuarios/exibir/$usuario->id"); ?>" class="btn btn-info btn-sm">Voltar</a>
       </div>
 
       <?php echo form_close(); ?>
@@ -50,4 +50,38 @@
     });
   });
 </script>
+
+<script>
+  $(document).ready(function() {
+    $('#form').submit(function(e) {
+      e.preventDefault();
+      $.ajax({
+        type: "POST",
+        url: "<?php echo site_url('usuarios/atualizar'); ?>",
+        data: new FormData(this),
+        dataType: 'json',
+        contentType: false,
+        cache: false,
+        processData: false,
+        beforeSend: function() {
+          $('#response').html('');
+          $('#btn-salva').val('Salvando...');
+          $('#btn-salva').attr('disabled', true);
+        },
+        success: function(response) {
+          $('#btn-salva').val('Salvar');
+          $('#btn-salva').removeAttr('disabled');
+          $('#response').html(response.response);
+          if (response.success) {
+            setTimeout(function() {
+              window.location.href = "<?php echo site_url('usuarios/exibir/'); ?>" + response.id;
+            }, 2000);
+          }
+        }
+      });
+    });
+  });
+</script>
+
+
 <?php echo $this->endSection(); ?>

@@ -27,7 +27,7 @@ class Usuarios extends BaseController
     {
 
         if (!$this->request->isAJAX()) {
-            // return redirect()->back();
+            return redirect()->back();
         }
 
         $atributos = [
@@ -78,6 +78,19 @@ class Usuarios extends BaseController
         ];
 
         return view('Usuarios/editar', $data);
+    }
+
+    public function atualizar()
+    {
+        if (!$this->request->isAJAX()) {
+            return redirect()->back();
+        }
+
+        $post = $this->request->getPost();
+        echo '<pre>';
+        print_r($post);
+        echo '</pre>';
+        exit;
     }
 
     /**
