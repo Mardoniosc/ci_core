@@ -45,7 +45,7 @@ class Usuarios extends BaseController
                 'imagem' => $usuario->imagem,
                 'nome' => $usuario->nome,
                 'email' => $usuario->email,
-                'ativo' => ($usuario->ativo == 't' ? 'Ativo' : '<span class="text-danger">Inativo</span>'),
+                'ativo' => ($usuario->ativo == 't' ? '<i class="fa fa-unlock-alt text-success"></i> <span class="text-success">Ativo</span>' : '<i class="fa fa-lock text-danger"></i> <span class="text-danger">Inativo</span>'),
             ];
         }
 
