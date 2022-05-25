@@ -12,7 +12,7 @@ class UsuarioFakerSeeder extends Seeder
 
         $faker = \Faker\Factory::create();
 
-        $criarQuantosUsuarios = 50;
+        $criarQuantosUsuarios = 20000;
 
         $usuariosPush = [];
 
@@ -22,7 +22,7 @@ class UsuarioFakerSeeder extends Seeder
                 'email' => $faker->unique()->email,
                 // 'password_hash' => password_hash('123456', PASSWORD_DEFAULT),
                 'password_hash' => '123456',
-                'ativo' => true
+                'ativo' => $faker->boolean(),
             ]);
         }
 
