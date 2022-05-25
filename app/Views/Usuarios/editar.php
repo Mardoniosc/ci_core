@@ -72,11 +72,28 @@
           $('#btn-salva').val('Salvar');
           $('#btn-salva').removeAttr('disabled');
           $('#response').html(response.response);
+          
+          if(!response.error) {
+            $('[name="csrf_core"]').val(response.token);
+            if(response.info) {
+              $('#response').html('<div class="alert alert-info"> '+ response.info +' </div>');
+
+
+            }
+          } else {
+            // Existe erro de validação
+          }
+          
           if (response.success) {
             setTimeout(function() {
               window.location.href = "<?php echo site_url('usuarios/exibir/'); ?>" + response.id;
             }, 2000);
           }
+        },
+        error: function(response) {
+          alert("Erro ao processar sua requisição");
+          $('#btn-salva').val('Salvar');
+          $('#btn-salva').removeAttr('disabled');
         }
       });
     });

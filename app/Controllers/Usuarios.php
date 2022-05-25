@@ -86,6 +86,13 @@ class Usuarios extends BaseController
             return redirect()->back();
         }
 
+        $retorno = [];
+
+        $retorno['token'] = csrf_hash();
+        $retorno['info'] = 'Informação mensagem';
+
+        return $this->response->setJSON($retorno);
+
         $post = $this->request->getPost();
         echo '<pre>';
         print_r($post);
