@@ -11,8 +11,8 @@
 <?php echo $this->section('conteudo'); ?>
 
 <div class="row">
-  <div class="col-lg-4">
-    <div class="block">
+  <div class="col-lg-4 panel">
+    <div class="panel-body">
       <div class="text-center">
         <?php if ($usuario->imagem == null) : ?>
           <img src="<?php echo site_url('inspinia/img/user.jpg'); ?>" alt="Usuário sem imagem" class="card-img-top" style="width: 90%;">
@@ -46,7 +46,7 @@
           </div>
         </div>
         <div class="col-lg-1">
-          <a href="<?php site_url("usuarios");?>" class="btn btn-info">Voltar</a>
+          <a href="<?php echo site_url("usuarios");?>" class="btn btn-info">Voltar</a>
         </div>
       </div>
 
