@@ -188,9 +188,9 @@
       </div>
 
       <div class="wrapper wrapper-content">
-
-        <?php echo $this->renderSection('conteudo'); ?>
-
+        <div class="container-fluid">
+          <?php echo $this->renderSection('conteudo'); ?>
+        </div>
       </div>
       <div class="footer">
         <div class="pull-right">
