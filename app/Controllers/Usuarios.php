@@ -60,8 +60,6 @@ class Usuarios extends BaseController
     {
         $usuario = $this->buscaUsuarioOu404($id);
 
-        dd($usuario);
-
         $data = [
             'titulo' => "Detalhando o usuário " . esc($usuario->nome),
             'usuario' => $usuario,

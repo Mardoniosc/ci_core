@@ -28,8 +28,8 @@
 
       <h5 class="card-title m-t-sm"><?php echo esc($usuario->nome); ?></h5>
       <p class="card-text"><?php echo esc($usuario->email); ?></p>
-      <p class="card-text"><strong>Criado:</strong> <?php echo $usuario->criado_em; ?></p>
-      <p class="card-text"><strong>Atualizado:</strong> <?php echo $usuario->atualizado_em; ?></p>
+      <p class="card-text"><strong>Criado:</strong> <?php echo $usuario->criado_em->humanize(); ?></p>
+      <p class="card-text"><strong>Atualizado:</strong> <?php echo $usuario->atualizado_em->humanize(); ?></p>
 
       <div class="row">
         <div class="col-lg-2">
