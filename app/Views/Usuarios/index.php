@@ -38,4 +38,18 @@
 
 <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.12.1/r-2.3.0/datatables.min.js"></script>
 
+<script>
+  $(document).ready(function () {
+    $('#ajaxTable').DataTable({
+        ajax: '<?php echo site_url('usuarios/recuperausuarios'); ?>',
+        columns: [
+            { data: 'imagem' },
+            { data: 'nome' },
+            { data: 'email' },
+            { data: 'ativo' }
+        ],
+    });
+});
+</script>
+
 <?php echo $this->endSection(); ?>
