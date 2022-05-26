@@ -77,20 +77,19 @@
           if (!response.erro) {
             if (response.info) {
               $('#response').html('<div class="alert alert-info"> ' + response.info + ' </div>');
-
             } else {
-
               window.location.href = "<?php echo site_url("usuarios/exibir/$usuario->id"); ?>";
             }
-
-
-          } 
-          
-          if (response.erro) {
-            $('#response').html('<div class="alert alert-danger"> ' + response.erro + ' </div>');
-            
           }
 
+          if (response.erro) {
+            $('#response').html('<div class="alert alert-danger"> ' + response.erro + ' </div>');
+            if (response.erros_model) {
+              $.each(response.erros_model, function(key, value) {
+                $('#response').append('<ul class="list-unstyled"><li class="text-danger">' + value + '</li></ul>');
+              });
+            }
+          }
         },
         error: function(response) {
           alert("Erro 403 de bakcend ao processar sua requisição");
@@ -98,6 +97,10 @@
           $('#btn-salva').removeAttr('disabled');
         }
       });
+    });
+
+    $('#form').submit(function(e) {
+      $(this).find(':submit').attr('disabled', 'disabled');
     });
   });
 </script>

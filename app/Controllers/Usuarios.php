@@ -89,8 +89,13 @@ class Usuarios extends BaseController
         $retorno = [];
 
         $retorno['token'] = csrf_hash();
-        
-        $retorno['erro'] = 'Campo senha deve ser igual ao campo confirmação de senha';
+
+        $retorno['erro'] = 'Erro de campos de validação';
+        $retorno['erros_model'] = [
+            'nome' => 'Nome obrigatório', 
+            'email' => 'E-mail já consta na nossa base de dados', 
+            'password' => 'Senha deve ter o tamanho mínimo de 6'
+        ];
 
         return $this->response->setJSON($retorno);
 
