@@ -7,7 +7,7 @@ use CodeIgniter\Model;
 class UsuarioModel extends Model
 {
     protected $table            = 'usuarios';
-    protected $returnType       = 'object';
+    protected $returnType       = 'App\Entities\Usuario';
     protected $useSoftDeletes   = true;
     protected $allowedFields    = [
         'nome',
@@ -30,6 +30,17 @@ class UsuarioModel extends Model
 
 
     // Callbacks
-    protected $beforeInsert   = [];
-    protected $beforeUpdate   = [];
+    protected $beforeInsert   = ['hashPassword'];
+    protected $beforeUpdate   = ['hashPassword'];
+
+    protected function hashPassword(array $data)
+    {
+        if (isset($data['data']['password'])) {
+            $data['data']['password_hash'] = password_hash($data['data']['password'], PASSWORD_DEFAULT);
+            unset($data['data']['password']);
+            unset($data['data']['password_confirmation']);
+        }
+
+        return $data;
+    }
 }
