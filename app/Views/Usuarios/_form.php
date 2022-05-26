@@ -19,10 +19,10 @@
 </div>
 
 <div class="form-group">
-  <input type="hidden" name="ativo" value="0">
+  <input type="hidden" name="ativo" value="f">
 
   <label> 
-    <input type="checkbox" class="i-checks" name="ativo" value="1" <?php if($usuario->ativo == 't'): ?> checked <?php endif; ?>> 
+    <input type="checkbox" class="i-checks" name="ativo" value="t" <?php if($usuario->ativo == 't'): ?> checked <?php endif; ?>> 
     Usuário ativo 
   </label>
 </div>

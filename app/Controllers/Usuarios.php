@@ -101,7 +101,6 @@ class Usuarios extends BaseController
         // Preenchemos os atributos do usuário com os valores do POST
         $usuario->fill($post);
 
-
         if ($usuario->hasChanged() == false) {
 
             $retorno['info'] = "Nenhum dados do usuário foi alterado!";
@@ -109,6 +108,9 @@ class Usuarios extends BaseController
         }
 
         if ($this->usuarioModel->protect(false)->save($usuario)) {
+
+            session()->setFlashdata('sucesso', 'Usuário atualizado com sucesso!');
+
             return $this->response->setJSON($retorno);
         }
 

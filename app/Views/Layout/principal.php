@@ -44,7 +44,7 @@
               IN+
             </div>
           </li>
-          
+
           <li>
             <a href="<?php echo site_url('inspinia/'); ?>layouts.html"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a>
           </li>
@@ -54,7 +54,7 @@
           <li>
             <a href="<?php echo site_url('inspinia/'); ?>widgets.html"><i class="fa fa-flask"></i> <span class="nav-label">Widgets</span></a>
           </li>
-       
+
         </ul>
 
       </div>
@@ -189,7 +189,11 @@
 
       <div class="wrapper wrapper-content">
         <div class="container-fluid">
+
+          <?php echo $this->include('Layout/_mensagens'); ?>
+
           <?php echo $this->renderSection('conteudo'); ?>
+          
         </div>
       </div>
       <div class="footer">
@@ -197,7 +201,7 @@
           10GB of <strong>250GB</strong> Free.
         </div>
         <div>
-          <strong>Copyright</strong> SmallTecnologia &copy; <?php echo date('Y');?>
+          <strong>Copyright</strong> SmallTecnologia &copy; <?php echo date('Y'); ?>
         </div>
       </div>
 
@@ -213,7 +217,7 @@
   <!-- Custom and plugin javascript -->
   <script src="<?php echo site_url('inspinia/'); ?>js/inspinia.js"></script>
   <script src="<?php echo site_url('inspinia/'); ?>js/plugins/pace/pace.min.js"></script>
-  
+
   <?php echo $this->renderSection('scripts'); ?>
 
 </body>
