@@ -90,22 +90,25 @@ class Usuarios extends BaseController
         $retorno['token'] = csrf_hash();
 
         $post = $this->request->getPost();
-        unset($post['password']);
-        unset($post['password_confirmation']);
 
         $usuario = $this->buscaUsuarioOu404($post['id']);
+
+        if (empty($post['password'])) {
+            unset($post['password']);
+            unset($post['password_confirmation']);
+        }
 
         // Preenchemos os atributos do usuário com os valores do POST
         $usuario->fill($post);
 
 
-        if($usuario->hasChanged() == false) {
+        if ($usuario->hasChanged() == false) {
 
             $retorno['info'] = "Nenhum dados do usuário foi alterado!";
             return $this->response->setJSON($retorno);
         }
 
-        if($this->usuarioModel->protect(false)->save($usuario)) {
+        if ($this->usuarioModel->protect(false)->save($usuario)) {
             return $this->response->setJSON($retorno);
         }
 
