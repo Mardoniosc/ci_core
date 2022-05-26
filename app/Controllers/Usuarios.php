@@ -3,6 +3,7 @@
 namespace App\Controllers;
 
 use App\Controllers\BaseController;
+use App\Entities\Usuario;
 
 class Usuarios extends BaseController
 {
@@ -54,6 +55,18 @@ class Usuarios extends BaseController
         ];
 
         return $this->response->setJSON($retorno);
+    }
+
+    public function criar()
+    {
+        $usuario = new Usuario();
+
+        $data = [
+            'titulo' => "Criando novo usuário ",
+            'usuario' => $usuario,
+        ];
+
+        return view('Usuarios/criar', $data);
     }
 
     public function exibir(int $id = null)

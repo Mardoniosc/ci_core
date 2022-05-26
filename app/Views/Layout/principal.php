@@ -45,11 +45,11 @@
             </div>
           </li>
 
-          <li>
-            <a href="<?php echo site_url('inspinia/'); ?>layouts.html"><i class="fa fa-diamond"></i> <span class="nav-label">Layouts</span></a>
+          <li class="<?php echo (url_is('/') || url_is('home*') ? 'active' : '');?>">
+            <a href="<?php echo site_url('/'); ?>"><i class="fa fa-dashboard"></i> <span class="nav-label">Home</span></a>
           </li>
-          <li>
-            <a href="<?php echo site_url('inspinia/'); ?>metrics.html"><i class="fa fa-pie-chart"></i> <span class="nav-label">Metrics</span> </a>
+          <li class="<?php echo (url_is('usuarios*') ? 'active' : '');?>">
+            <a href="<?php echo site_url('/usuarios'); ?>"><i class="fa fa-user"></i> <span class="nav-label">Usuários</span> </a>
           </li>
           <li>
             <a href="<?php echo site_url('inspinia/'); ?>widgets.html"><i class="fa fa-flask"></i> <span class="nav-label">Widgets</span></a>

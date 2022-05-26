@@ -14,6 +14,9 @@
 <div class="row">
   <div class="col-lg-12">
     <div class="ibox float-e-margins">
+
+      
+      <a href="<?php echo site_url('usuarios/criar')?>" class="btn btn-primary pull-right m-b-n-md">+ Adicionar Novo Usuário</a>
       <div class="ibox-content">
 
         <table id="ajaxTable" class="table table-striped" style="width: 100%;">
