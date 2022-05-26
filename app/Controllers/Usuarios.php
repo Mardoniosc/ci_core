@@ -89,7 +89,8 @@ class Usuarios extends BaseController
         $retorno = [];
 
         $retorno['token'] = csrf_hash();
-        $retorno['info'] = 'Informação mensagem';
+        
+        $retorno['erro'] = 'Campo senha deve ser igual ao campo confirmação de senha';
 
         return $this->response->setJSON($retorno);
 
