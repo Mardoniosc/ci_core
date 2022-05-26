@@ -86,24 +86,35 @@ class Usuarios extends BaseController
             return redirect()->back();
         }
 
-        $retorno = [];
-
+        // Envia o hash do token do form
         $retorno['token'] = csrf_hash();
 
-        $retorno['erro'] = 'Erro de campos de validação';
-        $retorno['erros_model'] = [
-            'nome' => 'Nome obrigatório', 
-            'email' => 'E-mail já consta na nossa base de dados', 
-            'password' => 'Senha deve ter o tamanho mínimo de 6'
-        ];
+        $post = $this->request->getPost();
+        unset($post['password']);
+        unset($post['password_confirmation']);
+
+        $usuario = $this->buscaUsuarioOu404($post['id']);
+
+        // Preenchemos os atributos do usuário com os valores do POST
+        $usuario->fill($post);
+
+
+        if($usuario->hasChanged() == false) {
+
+            $retorno['info'] = "Nenhum dados do usuário foi alterado!";
+            return $this->response->setJSON($retorno);
+        }
+
+        if($this->usuarioModel->protect(false)->save($usuario)) {
+            return $this->response->setJSON($retorno);
+        }
+
+        // Se chegou aqui, é porque deu erro
+        $retorno['erro'] = "Favor verificar os erros de validação abaixo e tenten novamente!";
+        $retorno['erros_model'] = $this->usuarioModel->errors();
+
 
         return $this->response->setJSON($retorno);
-
-        $post = $this->request->getPost();
-        echo '<pre>';
-        print_r($post);
-        echo '</pre>';
-        exit;
     }
 
     /**
