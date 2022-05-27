@@ -18,16 +18,19 @@
       <!-- Exibira os retornos do backend -->
       <div id="response"></div>
 
-      <?php echo form_open('/', ['id' => 'form'], ['id' => "$usuario->id"]) ?>
+      <?php echo form_open_multipart('/', ['id' => 'form'], ['id' => "$usuario->id"]) ?>
 
 
-      <?php echo $this->include('Usuarios/_form'); ?>
+      <div class="form-group">
+        <label>Escolha uma imagem</label>
+        <input type="file" class="form-control" name="imagem">
+      </div>
 
       <div class="form-group m-t-md m-b-sm">
 
         <input type="submit" id="btn-salva" class="btn btn-primary btn-sm m-r-sm" value="Salvar">
 
-        <a href="<?php echo site_url("usuarios"); ?>" class="btn btn-info btn-sm">Voltar</a>
+        <a href="<?php echo site_url("usuarios/exibir/$usuario->id"); ?>" class="btn btn-info btn-sm">Voltar</a>
       </div>
 
       <?php echo form_close(); ?>
@@ -57,7 +60,7 @@
       e.preventDefault();
       $.ajax({
         type: "POST",
-        url: "<?php echo site_url('usuarios/cadastrar'); ?>",
+        url: "<?php echo site_url('usuarios/atualizar'); ?>",
         data: new FormData(this),
         dataType: 'json',
         contentType: false,
@@ -78,7 +81,7 @@
             if (response.info) {
               $('#response').html('<div class="alert alert-info"> ' + response.info + ' </div>');
             } else {
-              window.location.href = "<?php echo site_url("usuarios/exibir/"); ?>" + response.id; ;
+              window.location.href = "<?php echo site_url("usuarios/exibir/$usuario->id"); ?>";
             }
           }
 

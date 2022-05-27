@@ -169,6 +169,18 @@ class Usuarios extends BaseController
         return $this->response->setJSON($retorno);
     }
 
+    public function editarImagem(int $id = null)
+    {
+        $usuario = $this->buscaUsuarioOu404($id);
+
+        $data = [
+            'titulo' => "Alterando a imagem do usuário " . esc($usuario->nome),
+            'usuario' => $usuario,
+        ];
+
+        return view('Usuarios/editar_imagem', $data);
+    }
+
     /**
      * Método que recupera os dados do usuário
      * @param int $id
