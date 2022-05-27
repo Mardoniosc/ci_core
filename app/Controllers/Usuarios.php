@@ -286,9 +286,7 @@ class Usuarios extends BaseController
         $usuario = $this->buscaUsuarioOu404($id);
 
         if ($usuario->deletado_em != null) {
-            session()->setFlashdata('erro', 'Usuário já foi excluído!');
             return redirect()->back()->with('info', "Ação não permitida, usuário já excluído!");
-
         }
 
         if($this->request->getMethod() == 'post') {
@@ -314,6 +312,21 @@ class Usuarios extends BaseController
         ];
 
         return view('Usuarios/excluir', $data);
+    }
+
+    public function desfazerExclusao(int $id = null)
+    {
+        $usuario = $this->buscaUsuarioOu404($id);
+
+        if ($usuario->deletado_em == null) {
+            return redirect()->back()->with('info', "Ação não permitida, usuário não está excluído!");
+        }
+
+        $usuario->deletado_em = null;
+
+        $this->usuarioModel->protect(false)->save($usuario);
+
+        return redirect()->back()->with('sucesso', "Usuário $usuario->nome recuperado com sucesso!");
     }
 
     /**
