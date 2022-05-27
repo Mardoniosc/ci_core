@@ -206,7 +206,7 @@ class Usuarios extends BaseController
 
         $validacao->setRules($regras, $mensagens);
 
-        if($validacao->withRequest($this->request)->run() == false) {
+        if ($validacao->withRequest($this->request)->run() == false) {
             $retorno['erro'] = "Favor verificar os erros de validação abaixo e tenten novamente!";
             $retorno['erros_model'] = $validacao->getErrors();
 
@@ -221,7 +221,7 @@ class Usuarios extends BaseController
 
         list($largura, $altura) = getimagesize($imagem->getPathName());
 
-        if( $largura < "300" || $altura < "300" ) {
+        if ($largura < "300" || $altura < "300") {
             $retorno['erro'] = "A imagem deve ter no mínimo 300x300 pixels!";
             $retorno['erros_model'] = ["Dimensão" => 'A imagem não pode ser menor do que 300x300 pixels!'];
 
@@ -233,35 +233,32 @@ class Usuarios extends BaseController
 
         $caminhoImagem = WRITEPATH . "uploads/$caminhoImagem";
 
-        print_r($caminhoImagem);
-        exit;
+
+        service('image')
+            ->withFile($caminhoImagem)
+            ->fit(300, 300, 'center')
+            ->save($caminhoImagem);
 
 
-        if (empty($post['password'])) {
-            unset($post['password']);
-            unset($post['password_confirmation']);
-        }
+        $anoAtual = date('Y');
 
-        // Preenchemos os atributos do usuário com os valores do POST
-        $usuario->fill($post);
+        \Config\Services::image('imagick')
+            ->withFile($caminhoImagem)
+            ->text("CoreBase $anoAtual - User-ID $usuario->id", [
+                'color'      => '#fff',
+                'opacity'    => 0.5,
+                'withShadow' => false,
+                'hAlign'     => 'center',
+                'vAlign'     => 'bottom',
+                'fontSize'   => 12,
+            ])
+            ->save($caminhoImagem);
 
-        if ($usuario->hasChanged() == false) {
+        $usuario->imagem = $imagem->getName();
 
-            $retorno['info'] = "Nenhum dados do usuário foi alterado!";
-            return $this->response->setJSON($retorno);
-        }
+        $this->usuarioModel->save($usuario);
 
-        if ($this->usuarioModel->protect(false)->save($usuario)) {
-
-            session()->setFlashdata('sucesso', 'Usuário atualizado com sucesso!');
-
-            return $this->response->setJSON($retorno);
-        }
-
-        // Se chegou aqui, é porque deu erro
-        $retorno['erro'] = "Favor verificar os erros de validação abaixo e tenten novamente!";
-        $retorno['erros_model'] = $this->usuarioModel->errors();
-
+        session()->setFlashdata('sucesso', 'Imagem de usuário atualizada com sucesso!');
 
         return $this->response->setJSON($retorno);
     }
