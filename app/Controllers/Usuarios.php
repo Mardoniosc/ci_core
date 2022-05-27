@@ -252,6 +252,15 @@ class Usuarios extends BaseController
         return $this->response->setJSON($retorno);
     }
 
+    public function imagem(string $imagem = null)
+    {
+        $caminhoImagem = WRITEPATH . "uploads/usuarios/$imagem";
+
+        if($imagem != null) {
+            $this->exibeArquivo('usuarios', $imagem);
+        }
+    }
+
     /**
      * Método que recupera os dados do usuário
      * @param int $id
