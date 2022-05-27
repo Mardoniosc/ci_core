@@ -37,6 +37,7 @@ class Usuarios extends BaseController
             'email',
             'ativo',
             'imagem',
+            'deletado_em',
         ];
 
         $usuarios = $this->usuarioModel->select($atributos)
@@ -69,7 +70,7 @@ class Usuarios extends BaseController
                 'imagem' => $usuario->imagem = img($imagem),
                 'nome'   => anchor("/usuarios/exibir/$usuario->id", esc($usuario->nome), 'title="Exibir usuário ' . esc($usuario->nome) . '"'),
                 'email'  => esc($usuario->email),
-                'ativo'  => ($usuario->ativo == true ? '<i class="fa fa-unlock-alt text-success"></i> <span class="text-success">Ativo</span>' : '<i class="fa fa-lock text-danger"></i> <span class="text-danger">Inativo</span>'),
+                'ativo'  => $usuario->exibeSituacao(),
             ];
         }
 
@@ -283,6 +284,12 @@ class Usuarios extends BaseController
     public function excluir(int $id = null)
     {
         $usuario = $this->buscaUsuarioOu404($id);
+
+        if ($usuario->deletado_em != null) {
+            session()->setFlashdata('erro', 'Usuário já foi excluído!');
+            return redirect()->back()->with('info', "Ação não permitida, usuário já excluído!");
+
+        }
 
         if($this->request->getMethod() == 'post') {
 
