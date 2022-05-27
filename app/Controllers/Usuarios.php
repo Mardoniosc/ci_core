@@ -39,14 +39,16 @@ class Usuarios extends BaseController
             'imagem',
         ];
 
-        $usuarios = $this->usuarioModel->select($atributos)->findAll();
+        $usuarios = $this->usuarioModel->select($atributos)
+                                        ->orderBy('id', 'DESC')
+                                        ->findAll();
         $data = [];
         foreach ($usuarios as $usuario) {
             $data[] = [
                 'imagem' => $usuario->imagem,
                 'nome'   => anchor("/usuarios/exibir/$usuario->id", esc($usuario->nome), 'title="Exibir usuário ' . esc($usuario->nome) . '"'),
                 'email'  => esc($usuario->email),
-                'ativo'  => ($usuario->ativo == 't' ? '<i class="fa fa-unlock-alt text-success"></i> <span class="text-success">Ativo</span>' : '<i class="fa fa-lock text-danger"></i> <span class="text-danger">Inativo</span>'),
+                'ativo'  => ($usuario->ativo == true ? '<i class="fa fa-unlock-alt text-success"></i> <span class="text-success">Ativo</span>' : '<i class="fa fa-lock text-danger"></i> <span class="text-danger">Inativo</span>'),
             ];
         }
 
@@ -67,6 +69,38 @@ class Usuarios extends BaseController
         ];
 
         return view('Usuarios/criar', $data);
+    }
+
+    public function cadastrar()
+    {
+        if (!$this->request->isAJAX()) {
+            return redirect()->back();
+        }
+
+        // Envia o hash do token do form
+        $retorno['token'] = csrf_hash();
+
+        $post = $this->request->getPost();
+
+        $usuario = new Usuario($post);
+
+        if ($this->usuarioModel->protect(false)->save($usuario)) {
+
+
+            $btnCriar = anchor("/usuarios/criar", 'Cadastrar Novo Usuário', ['class' => 'btn btn-success b-t-sm']);
+
+            session()->setFlashdata('sucesso', "Usuário cadastrado com sucesso! <br> $btnCriar");
+
+            $retorno['id'] = $this->usuarioModel->getInsertID();
+
+            return $this->response->setJSON($retorno);
+        }
+        // Se chegou aqui, é porque deu erro
+        $retorno['erro'] = "Favor verificar os erros de validação abaixo e tenten novamente!";
+        $retorno['erros_model'] = $this->usuarioModel->errors();
+
+
+        return $this->response->setJSON($retorno);
     }
 
     public function exibir(int $id = null)
