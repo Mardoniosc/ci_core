@@ -234,29 +234,18 @@ class Usuarios extends BaseController
         $caminhoImagem = WRITEPATH . "uploads/$caminhoImagem";
 
 
-        service('image')
-            ->withFile($caminhoImagem)
-            ->fit(300, 300, 'center')
-            ->save($caminhoImagem);
+        $this->manipulaImagem($caminhoImagem, $usuario->id);
 
 
-        $anoAtual = date('Y');
-
-        \Config\Services::image('imagick')
-            ->withFile($caminhoImagem)
-            ->text("CoreBase $anoAtual - User-ID $usuario->id", [
-                'color'      => '#fff',
-                'opacity'    => 0.5,
-                'withShadow' => false,
-                'hAlign'     => 'center',
-                'vAlign'     => 'bottom',
-                'fontSize'   => 12,
-            ])
-            ->save($caminhoImagem);
+        $imagemAntiga = $usuario->imagem;
 
         $usuario->imagem = $imagem->getName();
 
         $this->usuarioModel->save($usuario);
+
+        if ($imagemAntiga != null) {
+            $this->removeImagemDoFileSystem($imagemAntiga);
+        }
 
         session()->setFlashdata('sucesso', 'Imagem de usuário atualizada com sucesso!');
 
@@ -276,5 +265,47 @@ class Usuarios extends BaseController
         }
 
         return $usuario;
+    }
+
+    /**
+     * Método que excluir imagem do usuário
+     * @param string $imagem
+     */
+    public function removeImagemDoFileSystem(string $imagem)
+    {
+        $caminhoImagem = WRITEPATH . "uploads/usuarios/$imagem";
+
+        if (is_file($caminhoImagem)) {
+            unlink($caminhoImagem);
+        }
+    }
+
+
+    /**
+     * Método que Manipula Imagem do usuário
+     * @param string $caminhoImagem
+     * @param string $IdUsuario
+     */
+    public function manipulaImagem(string $caminhoImagem, int $usuario_id)
+    {
+        service('image')
+            ->withFile($caminhoImagem)
+            ->fit(300, 300, 'center')
+            ->save($caminhoImagem);
+
+
+        $anoAtual = date('Y');
+
+        \Config\Services::image('imagick')
+            ->withFile($caminhoImagem)
+            ->text("CoreBase $anoAtual - User-ID $usuario_id", [
+                'color'      => '#fff',
+                'opacity'    => 0.5,
+                'withShadow' => false,
+                'hAlign'     => 'center',
+                'vAlign'     => 'bottom',
+                'fontSize'   => 12,
+            ])
+            ->save($caminhoImagem);
     }
 }
