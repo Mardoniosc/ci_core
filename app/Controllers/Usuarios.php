@@ -40,6 +40,7 @@ class Usuarios extends BaseController
         ];
 
         $usuarios = $this->usuarioModel->select($atributos)
+            ->withDeleted(true)
             ->orderBy('id', 'DESC')
             ->findAll();
         $data = [];
@@ -288,8 +289,14 @@ class Usuarios extends BaseController
             $this->usuarioModel->delete($usuario->id);
             
             if($usuario->imagem != null) {
+
                 $this->removeImagemDoFileSystem($usuario->imagem);
             }
+
+            $usuario->imagem = null;
+            $usuario->ativo = false;
+
+            $this->usuarioModel->protect(false)->save($usuario);
 
             return redirect()->to(site_url('usuarios'))->with('sucesso', "Usuário $usuario->nome excluído com sucesso!");
         }
