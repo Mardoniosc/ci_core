@@ -44,8 +44,28 @@ class Usuarios extends BaseController
             ->findAll();
         $data = [];
         foreach ($usuarios as $usuario) {
+
+            // definimos qual a url para a imagem do usuário
+            if($usuario->imagem) {
+                $imagem = [
+                    'src' => site_url("usuarios/imagem/$usuario->imagem"),
+                    'alt' => esc($usuario->nome),
+                    'class' => 'img-circle',
+                    'width' => '40',
+                    'height' => '40',
+                ];
+            } else {
+                $imagem = [
+                    'src' => site_url("inspinia/img/user.jpg"),
+                    'alt' => esc($usuario->nome),
+                    'class' => 'img-circle',
+                    'width' => '40',
+                    'height' => '40',
+                ];
+            }
+
             $data[] = [
-                'imagem' => $usuario->imagem,
+                'imagem' => $usuario->imagem = img($imagem),
                 'nome'   => anchor("/usuarios/exibir/$usuario->id", esc($usuario->nome), 'title="Exibir usuário ' . esc($usuario->nome) . '"'),
                 'email'  => esc($usuario->email),
                 'ativo'  => ($usuario->ativo == true ? '<i class="fa fa-unlock-alt text-success"></i> <span class="text-success">Ativo</span>' : '<i class="fa fa-lock text-danger"></i> <span class="text-danger">Inativo</span>'),
@@ -254,8 +274,6 @@ class Usuarios extends BaseController
 
     public function imagem(string $imagem = null)
     {
-        $caminhoImagem = WRITEPATH . "uploads/usuarios/$imagem";
-
         if($imagem != null) {
             $this->exibeArquivo('usuarios', $imagem);
         }
