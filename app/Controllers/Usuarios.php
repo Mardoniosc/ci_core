@@ -40,8 +40,8 @@ class Usuarios extends BaseController
         ];
 
         $usuarios = $this->usuarioModel->select($atributos)
-                                        ->orderBy('id', 'DESC')
-                                        ->findAll();
+            ->orderBy('id', 'DESC')
+            ->findAll();
         $data = [];
         foreach ($usuarios as $usuario) {
             $data[] = [
@@ -179,6 +179,91 @@ class Usuarios extends BaseController
         ];
 
         return view('Usuarios/editar_imagem', $data);
+    }
+
+    public function upload()
+    {
+        if (!$this->request->isAJAX()) {
+            return redirect()->back();
+        }
+
+        // Envia o hash do token do form
+        $retorno['token'] = csrf_hash();
+
+        $validacao = service('validation');
+
+        $regras = [
+            'imagem' => 'uploaded[imagem]|max_size[imagem,1024]|mime_in[imagem,image/jpg,image/jpeg,image/png]',
+        ];
+
+        $mensagens = [
+            "imagem" => [
+                "uploaded" => "Favor escolher uma imagem!",
+                "max_size" => "O tamanho máximo do arquivo é 1MB!",
+                "mime_in" => "O arquivo deve ser do tipo JPEG, JPG ou PNG!",
+            ],
+        ];
+
+        $validacao->setRules($regras, $mensagens);
+
+        if($validacao->withRequest($this->request)->run() == false) {
+            $retorno['erro'] = "Favor verificar os erros de validação abaixo e tenten novamente!";
+            $retorno['erros_model'] = $validacao->getErrors();
+
+            return $this->response->setJSON($retorno);
+        }
+
+        $post = $this->request->getPost();
+
+        $usuario = $this->buscaUsuarioOu404($post['id']);
+
+        $imagem = $this->request->getFile('imagem');
+
+        list($largura, $altura) = getimagesize($imagem->getPathName());
+
+        if( $largura < "300" || $altura < "300" ) {
+            $retorno['erro'] = "A imagem deve ter no mínimo 300x300 pixels!";
+            $retorno['erros_model'] = ["Dimensão" => 'A imagem não pode ser menor do que 300x300 pixels!'];
+
+            return $this->response->setJSON($retorno);
+        }
+
+
+        $caminhoImagem = $imagem->store('usuarios');
+
+        $caminhoImagem = WRITEPATH . "uploads/$caminhoImagem";
+
+        print_r($caminhoImagem);
+        exit;
+
+
+        if (empty($post['password'])) {
+            unset($post['password']);
+            unset($post['password_confirmation']);
+        }
+
+        // Preenchemos os atributos do usuário com os valores do POST
+        $usuario->fill($post);
+
+        if ($usuario->hasChanged() == false) {
+
+            $retorno['info'] = "Nenhum dados do usuário foi alterado!";
+            return $this->response->setJSON($retorno);
+        }
+
+        if ($this->usuarioModel->protect(false)->save($usuario)) {
+
+            session()->setFlashdata('sucesso', 'Usuário atualizado com sucesso!');
+
+            return $this->response->setJSON($retorno);
+        }
+
+        // Se chegou aqui, é porque deu erro
+        $retorno['erro'] = "Favor verificar os erros de validação abaixo e tenten novamente!";
+        $retorno['erros_model'] = $this->usuarioModel->errors();
+
+
+        return $this->response->setJSON($retorno);
     }
 
     /**
