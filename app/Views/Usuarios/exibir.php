@@ -28,7 +28,7 @@
 
       <h5 class="card-title m-t-sm"><?php echo esc($usuario->nome); ?></h5>
       <p class="card-text"><?php echo esc($usuario->email); ?></p>
-      <p class="card-text"><strong>Status: </strong> <?php echo $usuario->ativo == 't' ? 'Ativo' : 'Invativo' ; ?></p>
+      <p class="card-text"><strong>Status: </strong> <?php echo $usuario->exibeSituacao(); ?></p>
       <p class="card-text"><strong>Criado:</strong> <?php echo $usuario->criado_em->humanize(); ?></p>
       <p class="card-text"><strong>Atualizado:</strong> <?php echo $usuario->atualizado_em->humanize(); ?></p>
 
@@ -40,14 +40,18 @@
               <span class="caret"></span>
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
-              <li><a href="<?php echo site_url("usuarios/editar/$usuario->id"); ?>">Editar Usuário</a></li>
-              <li role="separator" class="divider"></li>
-              <li><a href="<?php echo site_url("usuarios/excluir/$usuario->id"); ?>">Excluir Usuário</a></li>
+              <?php if ($usuario->deletado_em == null) : ?>
+                <li><a href="<?php echo site_url("usuarios/editar/$usuario->id"); ?>">Editar Usuário</a></li>
+                <li role="separator" class="divider"></li>
+                <li><a href="<?php echo site_url("usuarios/excluir/$usuario->id"); ?>">Excluir Usuário</a></li>
+              <?php else : ?>
+                <li><a href="<?php echo site_url("usuarios/desfazerexclusao/$usuario->id"); ?>">Restaurar usuário</a></li>
+              <?php endif; ?>
             </ul>
           </div>
         </div>
         <div class="col-lg-1">
-          <a href="<?php echo site_url("usuarios");?>" class="btn btn-info">Voltar</a>
+          <a href="<?php echo site_url("usuarios"); ?>" class="btn btn-info">Voltar</a>
         </div>
       </div>
 

@@ -16,15 +16,14 @@
     <div class="ibox float-e-margins">
 
       
-      <a href="<?php echo site_url('usuarios/criar')?>" class="btn btn-primary pull-right m-b-n-md">+ Adicionar Novo Usuário</a>
+      <a href="<?php echo site_url('grupos/criar')?>" class="btn btn-primary pull-right m-b-n-md">+ Adicionar Novo Grupo</a>
       <div class="ibox-content">
 
         <table id="ajaxTable" class="table table-striped" style="width: 100%;">
           <thead>
             <tr>
-              <th>Imagem</th>
               <th>Nome</th>
-              <th>E-mail</th>
+              <th>Descrição</th>
               <th>Situação</th>
             </tr>
           </thead>
@@ -78,18 +77,16 @@
 
     $('#ajaxTable').DataTable({
       "language": DATATABLE_PTBR,
-      ajax: '<?php echo site_url('usuarios/recuperausuarios'); ?>',
-      columns: [{
-          data: 'imagem'
-        },
+      ajax: '<?php echo site_url('grupos/recuperagrupos'); ?>',
+      columns: [
         {
           data: 'nome'
         },
         {
-          data: 'email'
+          data: 'descricao'
         },
         {
-          data: 'ativo'
+          data: 'exibir'
         }
       ],
       "deferRender": true,
