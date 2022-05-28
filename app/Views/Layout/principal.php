@@ -51,6 +51,9 @@
           <li class="<?php echo (url_is('usuarios*') ? 'active' : '');?>">
             <a href="<?php echo site_url('/usuarios'); ?>"><i class="fa fa-user"></i> <span class="nav-label">Usuários</span> </a>
           </li>
+          <li class="<?php echo (url_is('grupos*') ? 'active' : '');?>">
+            <a href="<?php echo site_url('/grupos'); ?>"><i class="fa fa-cog"></i> <span class="nav-label">Grupos</span> </a>
+          </li>
           <li>
             <a href="<?php echo site_url('inspinia/'); ?>widgets.html"><i class="fa fa-flask"></i> <span class="nav-label">Widgets</span></a>
           </li>

@@ -50,7 +50,7 @@ class Grupos extends BaseController
             $data[] = [
                 'nome'   => anchor("/grupos/exibir/$grupo->id", esc($grupo->nome), 'title="Exibir grupo ' . esc($grupo->nome) . '"'),
                 'descricao'  => esc($grupo->descricao),
-                'exibir'  => ($grupo->exibir == true ? '<i class="fa fa-eye text-success"></i> &nbsp;Exibir grupo' : '<i class="fa fa-eye-slash text-danger"></i> &nbsp;Não exibir grupo'),
+                'exibir'  => $grupo->exibeSituacao(),
             ];
         }
 
@@ -59,5 +59,33 @@ class Grupos extends BaseController
         ];
 
         return $this->response->setJSON($retorno);
+    }
+
+    public function exibir(int $id = null)
+    {
+        $grupo = $this->buscaGrupoOu404($id);
+
+        $data = [
+            'titulo' => "Detalhando o grupo " . esc($grupo->nome),
+            'grupo' => $grupo,
+        ];
+
+        return view('Grupos/exibir', $data);
+    }
+
+
+    /**
+     * Método que recupera os dados do grupo
+     * @param int $id
+     * @return Exception|object
+     * 
+     */
+    private function buscaGrupoOu404(int $id = null)
+    {
+        if (!$id || !$grupo = $this->grupoModel->withDeleted(true)->find($id)) {
+            throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("Grupo não encontrado:  $id");
+        }
+
+        return $grupo;
     }
 }
