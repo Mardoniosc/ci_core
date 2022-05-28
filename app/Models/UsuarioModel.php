@@ -36,8 +36,8 @@ class UsuarioModel extends Model
         'nome'        => [
             'required' => 'O campo nome é obrigatório.',
             'alpha_numeric_space' => 'O campo nome deve conter apenas letras, números e espaços.',
-            'min_length' => 'O campo nome é deve ter no mínimo 3 caracteres.',
-            'max_length' => 'O campo nome é deve ter no máximo 125 caracteres.',
+            'min_length' => 'O campo nome deve ter no mínimo 3 caracteres.',
+            'max_length' => 'O campo nome deve ter no máximo 125 caracteres.',
         ],
 
         'email'        => [
